@@ -9,6 +9,9 @@ def process():
     webStories = WebStory.objects.all()
     for story in webStories:
         cleaned = clean(story)
+        current = CleanStory.objects.get(webStory=story)
+        if (current):
+            cleaned.fearful=current.fearful
         cleaned.save()
 
 if __name__ == "__main__":
