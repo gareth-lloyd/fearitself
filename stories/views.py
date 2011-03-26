@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 
 from googlereader import Reader, getCredentials
-from datetime import datetime
+from datetime import datetime, date
 from story_processor import saveStories
 from forms import TrainingForm
 
@@ -24,17 +24,25 @@ class FearLevel(object):
             self.active = False
 
 LEVELS = [
-    FearLevel('Red', 'red',  .7, 1.0),
-    FearLevel('Orange', 'orange', .6, .7),
-    FearLevel('Yellow', 'yellow', .5, .6),
-    FearLevel('Green', 'green', .4, .5),
-    FearLevel('Blue', 'blue', 0, .4),
+    FearLevel('shit it..', 'red',  .7, 1.0),
+    FearLevel('panic buy', 'orange', .6, .7),
+    FearLevel('an ill wind', 'yellow', .5, .6),
+    FearLevel('carry on', 'green', .4, .5),
+    FearLevel('pimms anyone?', 'blue', 0, .4),
 ]
 
 # Create your views here.
 def fear(request):
-    # get fear level...
-    fearlevel = .5
+    
+    fearful = 0.0
+    stories = WebStory.objects.filter(date__gte=date.today())
+    for story in stories:
+        fear = story.cleanstory.fearful
+        if (fear == 1):
+            fearful+= 1
+    
+    fearlevel = fearful / len(stories)
+    print "Threat level: "+str(fearlevel)+", fearful: "+str(fearful)+", number: "+str(len(stories))
     return render_to_response('fear.html',
             {'levels': getLevels(fearlevel)},
             context_instance=RequestContext(request))
