@@ -6,7 +6,7 @@ class NewsSource(models.Model):
     RSS feed. 
     """
     name = models.CharField(blank=False, max_length=300)
-    feed = models.CharField(blank=False, max_length=300)
+    feed = models.CharField(blank=False, max_length=300, unique=True)
     lastAccessed = models.DateTimeField(blank=True, null=True)
     
 class WebStory(models.Model):
@@ -25,5 +25,5 @@ class WebStory(models.Model):
 
 class CleanStory(models.Model):
     fearful = models.NullBooleanField()
-    webStory = models.OneToOneField(WebStory)
+    webStory = models.OneToOneField(WebStory, primary_key=True)
     text = models.TextField(blank=False)

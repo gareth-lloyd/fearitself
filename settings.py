@@ -3,7 +3,7 @@ import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+DEFAULT_CHARSET = 'utf-8'
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
