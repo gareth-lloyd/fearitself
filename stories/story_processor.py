@@ -3,7 +3,6 @@ from django.db import IntegrityError
 import chardet
 from datetime import datetime
 from urllib2 import Request, urlopen
-from BeautifulSoup import BeautifulSoup
 import feedparser
 
 D_FMT = '%Y-%m-%dT%H:%M:%SZ'
@@ -36,20 +35,4 @@ def processEntry(entry, source):
             link=link, date=date,
             source=source, fullText=fullText)
 
-def cleanStory(story):
-    soup = BeautifulSoup(story.fullText)
-    paras = soup.findAll('p')
-    texts = [story.title]
-    for p in paras:
-        texts.append(_processPara(p))
-    
-    cleanText = " ".join(texts)
-    return CleanStory(text=cleanText, webStory=story)
-
-def _processPara(p):
-    text = p.getText()
-    if len(text) > 30:
-        return text
-    else:
-        return ''
 
