@@ -85,6 +85,7 @@ color: #eee;
 .active_True{
     -webkit-box-shadow: 10px 10px 5px #888888; /* Safari */
     box-shadow: 10px 10px 5px #888888;
+    -moz-box-shadow: 10px 10px 5px #888888;
     margin-top: 5px;
     margin-bottom: 18px;
 }
