@@ -4,12 +4,14 @@ from urllib import urlencode
 import calendar
 import datetime
 import os
+import re
 
 class Reader(object):
     BASE = "https://www.google.com"
     LOGIN = "/accounts/ClientLogin"
     FEED = "http://www.google.com/reader/atom/feed/%s"
 
+    CONT_PTN = re.compile("<gr:continuation>(.+)</gr:continuation>")
     def __init__(self, credentials):
         data = urlencode((
                 ('Email', credentials[0]),
@@ -27,12 +29,21 @@ class Reader(object):
         url = Reader.FEED % feedUrl + "?n=20"
         return self._get(url)
 
-    def getFeedItemsAfter(self, feedUrl, afterDate):
+    def getFeedItemsAfter(self, feedUrl, afterDate=None, cont=None):
         url = Reader.FEED % feedUrl
         
-        dateStr = calendar.timegm(afterDate.utctimetuple())
-        url += "?r=o&ot=%s" % dateStr
+        if cont:
+            url += "?r=o" + "&c=%s" % cont
+        elif afterDate:
+            dateStr = calendar.timegm(afterDate.utctimetuple())
+            url += "?r=o" + "&ot=%s" % dateStr
         return self._get(url)
+
+    def getContinuation(self, content):
+        match = Reader.CONT_PTN.search(content)
+        if match:
+            return match.group(1)
+        return None
 
     def _get(self, url):
         req = Request(url)

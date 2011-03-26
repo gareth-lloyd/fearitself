@@ -6,8 +6,8 @@ class NewsSource(models.Model):
     RSS feed. 
     """
     name = models.CharField(blank=False, max_length=300)
-    feed = models.URLField(blank=False)
-    lastAccessed = models.DateTimeField(blank=True)
+    feed = models.CharField(blank=False, max_length=300)
+    lastAccessed = models.DateTimeField(blank=True, null=True)
     
 class WebStory(models.Model):
     """
@@ -15,7 +15,7 @@ class WebStory(models.Model):
     with no attempt to make sense of HTML etc.
     """
     title = models.CharField(blank=False, max_length=300)
-    link = models.URLField(blank=False)
+    link = models.CharField(blank=False, max_length=600)
     date = models.DateField(blank=False)
     source = models.ForeignKey(NewsSource)
     fullText = models.TextField(blank=False)
