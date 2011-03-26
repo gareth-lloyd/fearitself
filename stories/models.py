@@ -24,7 +24,6 @@ class WebStory(models.Model):
         unique_together = (('title', 'source'),)
 
 class CleanStory(models.Model):
-    fearful = models.BooleanField(blank=True)
+    fearful = models.NullBooleanField()
     webStory = models.OneToOneField(WebStory)
     text = models.TextField(blank=False)
-    

@@ -1,6 +1,6 @@
-<html>
-<head></head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Sources</h1>
 <ul>
 {% for source in sources %}
@@ -11,5 +11,4 @@
 
 {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}

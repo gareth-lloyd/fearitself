@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Training</h1>
+<h3>Classify this story:</h3>
+<form action="/fear/training/{{cleanStory.id}}/" method="POST" id="trainingForm">
+<p>
+{{cleanStory.text}}
+</p>
+<div>
+{{ form.fearful }}
+</div>
+<input type="submit" value="Train"/>
+</form>
+{% endblock %}

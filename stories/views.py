@@ -8,7 +8,7 @@ from datetime import datetime
 from story_processor import saveStories
 from forms import TrainingForm
 
-START = datetime(2011, 3, 20)
+START = datetime(2011, 3, 21)
 
 class FearLevel(object):
     def __init__(self, name, colourName, low, high):
@@ -39,12 +39,29 @@ def fear(request):
             {'levels': getLevels(fearlevel)},
             context_instance=RequestContext(request))
 
+# this is never used to create new CleanStory objects
 def training(request, clean_id=None):
-    if clean_id:
-        cleanStory = get_object_or_404(CleanStory, id=clean_id)
+        
+    if request.method == 'POST':
+        instance = get_object_or_404(CleanStory, id=clean_id)
+        form = TrainingForm(request.POST, instance=instance)
+        if form.is_valid():
+            cleanStory = form.save()
+    
+    if request.method == 'GET' and clean_id is not None:
+        instance = get_object_or_404(CleanStory, id=clean_id)
     else:
-        pass
-
+        # get next unclassified
+        stories = CleanStory.objects.all()
+        for s in stories:
+            if s.fearful is None:
+                instance = s
+        if not s:
+            return HttpResponseRedirect('/fear/sources/')
+    form = TrainingForm(instance=instance)
+    return render_to_response('training.html',
+                    {'form': form, 'cleanStory': instance},
+                    context_instance=RequestContext(request))
 
 def getLevels(fearlevel):
     for level in LEVELS:
@@ -63,8 +80,6 @@ def updatesource(request, source_id=None):
     if not start:
         start = START
     getFeedItems(source, start)
-    source.lastAccessed = datetime.now()
-    source.save()
     return HttpResponseRedirect('/fear/sources/')
 
 def getFeedItems(source, start):
@@ -74,5 +89,6 @@ def getFeedItems(source, start):
         response = reader.getFeedItemsAfter(source.feed, start, continuation)
         content = response.read()
         continuation = reader.getContinuation(content)
-        saveStories(content, source)
-        
+        lastDate = saveStories(content, source)
+        source.lastAccessed = lastDate
+        source.save()
