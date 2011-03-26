@@ -18,11 +18,12 @@ def saveStories(feedContents, source):
             print "FOUND existing story"
         else:
             story = processEntry(entry, source)
-            print 'Saving: %s' % story.title
-            try:
-                story.save()
-            except IntegrityError:
-                print "WARNING. Skipped duplicate entry for %s" % story.title
+            if story:
+                print 'Saving: %s' % story.title
+                try:
+                    story.save()
+                except IntegrityError:
+                    print "WARNING. Skipped duplicate entry for %s" % story.title
         lastDate = story.date
     return lastDate
 
@@ -32,7 +33,11 @@ def getEntries(feedContents):
 
 def getFullText(link):
     request = Request(link)
-    content = urlopen(request).read()
+    try:
+        content = urlopen(request).read()
+    except:
+        print "ERROR opening %s" % link
+        return None
     encoding = chardet.detect(content)['encoding']
     return unicode(content, encoding)
 
