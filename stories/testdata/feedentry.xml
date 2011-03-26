@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<feed xmlns:idx="urn:atom-extension:indexing" xmlns:media="http://search.yahoo.com/mrss/" xmlns:gr="http://www.google.com/schemas/reader/atom/" xmlns="http://www.w3.org/2005/Atom" idx:index="no" gr:dir="ltr">
+<!--
+Content-type: Preventing XSRF in IE.
+
+-->
+<generator uri="http://www.google.com/reader">
+Google Reader</generator>
+<id>
+tag:google.com,2005:reader/user/02605357201389175073/label/news</id>
+<link rel="hub" href="http://pubsubhubbub.appspot.com/"/>
+<title>
+"news" via Gareth Lloyd in Google Reader</title>
+<link rel="self" href="http://www.google.com/reader/public/atom/user%2F02605357201389175073%2Flabel%2Fnews?n=200"/>
+<author>
+<name>
+Gareth Lloyd</name>
+</author>
+<updated>
+2011-03-25T11:15:23Z</updated>
+<entry gr:crawl-timestamp-msec="1301051723579">
+<id gr:original-id="http://www.telegraph.co.uk/culture/tvandradio/bbc/8406107/BBC-axes-My-Family-sitcom-after-more-than-100-episodes.html">
+tag:google.com,2005:reader/item/9d49dfde0307b323</id>
+<category term="1 SHOWBIZ Family"/>
+<title type="html">
+BBC axes My Family sitcom after more than 100 episodes</title>
+<published>
+2011-03-25T10:57:35Z</published>
+<updated>
+2011-03-25T10:57:35Z</updated>
+<link rel="alternate" href="http://telegraph.feedsportal.com/c/32726/f/564430/s/139f1592/l/0L0Stelegraph0O0Cculture0Ctvandradio0Cbbc0C840A610A70CBBC0Eaxes0EMy0EFamily0Esitcom0Eafter0Emore0Ethan0E10A0A0Eepisodes0Bhtml/story01.htm" type="text/html"/>
+<link rel="enclosure" href="http://telegraph.feedsportal.com/c/32726/f/564430/e/1/s/139f1592/l/0Li0Btelegraph0O0Cmultimedia0Carchive0C0A18560CRobertLindsay0I1856978i0Bjpg/RobertLindsay_1856978i.jpg" type="image/jpeg" length="99"/>
+<summary xml:base="http://www.telegraph.co.uk/news/" type="html">
+The BBC is to axe the long-running sitcom My Family, starring Robert Lindsay and Zoë Wanamaker, after 11 years.&lt;img width="1" height="1" src="http://telegraph.feedsportal.com/c/32726/f/564430/s/139f1592/mf.gif" border="0"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="http://da.feedsportal.com/r/98505863061/u/31/f/564430/c/32726/s/139f1592/a2.htm"&gt;&lt;img src="http://da.feedsportal.com/r/98505863061/u/31/f/564430/c/32726/s/139f1592/a2.img" border="0"&gt;&lt;/a&gt;</summary>
+<author gr:unknown-author="true">
+<name>
+(author unknown)</name>
+</author>
+<source gr:stream-id="feed/http://www.telegraph.co.uk/news/rss">
+<id>
+tag:google.com,2005:reader/feed/http://www.telegraph.co.uk/news/rss</id>
+<title type="html">
+News - Latest breaking news</title>
+<link rel="alternate" href="http://www.telegraph.co.uk/news/" type="text/html"/>
+</source>
+</entry>
+</feed>
+

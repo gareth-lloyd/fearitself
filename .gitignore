@@ -1,0 +1,5 @@
+*.pyc
+*.kpf
+credentials.txt
+settings_live.py
+jmeter_tests.jmx
