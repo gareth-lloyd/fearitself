@@ -24,11 +24,11 @@ class FearLevel(object):
             self.active = False
 
 LEVELS = [
-    FearLevel('Red', 'red',  .7, 1.0),
-    FearLevel('Orange', 'orange', .6, .7),
-    FearLevel('Yellow', 'yellow', .5, .6),
-    FearLevel('Green', 'green', .4, .5),
-    FearLevel('Blue', 'blue', 0, .4),
+    FearLevel('shit it..', 'red',  .7, 1.0),
+    FearLevel('panic buy', 'orange', .6, .7),
+    FearLevel('an ill wind', 'yellow', .5, .6),
+    FearLevel('carry on', 'green', .4, .5),
+    FearLevel('pimms anyone?', 'blue', 0, .4),
 ]
 
 # Create your views here.

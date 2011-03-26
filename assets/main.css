@@ -3,6 +3,7 @@ body {
     color: #333;
     font: 1em verdana, arial, helvetica, sans-serif;
 	margin: 0;
+    text-align: center;
 }
 a:link, a:visited, a:hover {
     color: #666;
@@ -13,11 +14,8 @@ a:link, a:visited, a:hover {
 width: 700px;
 margin: 0 auto;
 }
-h1 {
-    color: #48802c;
-    font-weight: normal;
-    font-size: 16px;
-    margin: .8em 0 .3em 0;
+h2 {
+    color: #09F;
 }
 h3 {
 	margin: 0 0 .4em;
@@ -26,7 +24,20 @@ ul {
     padding-left: 15px;
 }
 #main_title {
-    font-size: 5em;
+    font-size: 7em;
+    font-family: 'Lobster', serif;
+    font-style: normal;
+    font-weight: 500;
+    text-shadow: none;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0em;
+    word-spacing: 0em;
+    line-height: 1em;
+    color: darkgrey;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 10px;
 }
 
 #id_text{
@@ -36,32 +47,39 @@ heigh:500px;
  * fear levels
  * ************/
 .fearlevel {
-    width:500px;
+    width:675px;
     font-size: 3em;
     text-align: center;
-padding: 1em;
+padding: 0.25em;
+padding-top: 0.125em;
+padding-bottom: 0.125em;
 }
 .fearlevel_blue{
 background:#336699;
+color: #eee;
 }
 .fearlevel_green{
 background:#339933;
+color: lightgrey;
 }
 .fearlevel_yellow{
 background:#ffff33;
+color: #333;
 }
 .fearlevel_orange{
 background:#ff9900;
+color: lightgrey;
 }
 .fearlevel_red{
 background:#cc0000;
+color: #eee;
 }
 .active_True{
-border: solid #000000;
-border-width: .5em;
+border: solid #09F;
+border-width: .125em;
 }
 .active_False{
-margin: 0 .5em 0 .5em;
+margin: 0 .125em 0 .125em;
 }
 
 /**************
