@@ -51,13 +51,13 @@ def fear(request):
 def training(request, clean_id=None):
         
     if request.method == 'POST':
-        instance = get_object_or_404(CleanStory, id=clean_id)
+        print "POST"
+        instance = get_object_or_404(CleanStory, pk=clean_id)
         form = TrainingForm(request.POST, instance=instance)
-        if form.is_valid():
-            cleanStory = form.save()
+        cleanStory = form.save()
     
     if request.method == 'GET' and clean_id is not None:
-        instance = get_object_or_404(CleanStory, id=clean_id)
+        instance = get_object_or_404(CleanStory, pk=clean_id)
     else:
         # get next unclassified
         stories = CleanStory.objects.all()
