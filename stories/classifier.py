@@ -1,20 +1,25 @@
 import nltk.classify.util
 from nltk.classify import NaiveBayesClassifier
+import os
 
 from models import CleanStory
 
 def getFearWords():
-    with open("fearwords.txt") as words:
-        return words.readlines()
+    path = os.path.join(os.path.dirname(__file__), "fearwords.txt") 
+    wordList = []
+    with open(path) as words:
+        for line in words:
+            wordList.append(line.strip())
+    return dict(map(lambda x: (x, 1), wordList))
 
 FEARWORDS = getFearWords()
 
 def word_feats(words):
     feats = dict([(word, True) for word in words])
 
-    numFearWords
+    numFearWords = 0
     for word in words:
-        if FEARWORDS.contains(word):
+        if FEARWORDS.has_key(word.lower()):
             numFearWords += 1
     feats['num_fear_words'] = numFearWords
     return feats

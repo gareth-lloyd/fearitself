@@ -11,6 +11,13 @@ from datetime import datetime
 import os
 from models import NewsSource
 
+from classifier import *
+
+class ClassifierTest(unittest.TestCase):
+    def testGetFearWords(self):
+        print 'hi'
+        print getFearWords()
+
 class GoogleReaderTest(unittest.TestCase):
     u = "http%3A%2F%2Fwww.thisislondon.co.uk%2Fstandard-home%2Frss%2F%3Fito%3D1588"
     def testCredentials(self):
