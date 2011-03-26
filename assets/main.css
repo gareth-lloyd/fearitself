@@ -57,10 +57,14 @@ padding-bottom: 0.125em;
 .fearlevel_blue{
 background:#336699;
 color: #eee;
+-webkit-border-bottom-right-radius: 10px;
+-webkit-border-bottom-left-radius: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
 }
 .fearlevel_green{
 background:#339933;
-color: lightgrey;
+color: #ddd;
 }
 .fearlevel_yellow{
 background:#ffff33;
@@ -68,18 +72,24 @@ color: #333;
 }
 .fearlevel_orange{
 background:#ff9900;
-color: lightgrey;
+color: #ddd;
 }
 .fearlevel_red{
 background:#cc0000;
 color: #eee;
+-webkit-border-top-right-radius: 10px;
+-webkit-border-top-left-radius: 10px;
+-moz-border-radius-topright: 10px;
+-moz-border-radius-topleft: 10px;
 }
 .active_True{
-border: solid #09F;
-border-width: .125em;
+    -webkit-box-shadow: 10px 10px 5px #888888; /* Safari */
+    box-shadow: 10px 10px 5px #888888;
+    margin-top: 5px;
+    margin-bottom: 18px;
 }
 .active_False{
-margin: 0 .125em 0 .125em;
+    margin-left:10px;
 }
 
 /**************
