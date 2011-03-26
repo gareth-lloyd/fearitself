@@ -3,3 +3,6 @@ This is a project for the Rewired State Hackday, March 2011
 "We have nothing to fear but fear itself"
 
 Analyzing the fear levels in British national newspapers.
+
+
+(For the sake of the competition, the first commit to this repo represents all work done before the hack day itself. It's mainly infrastructure stuff to pull down the various feeds.)
