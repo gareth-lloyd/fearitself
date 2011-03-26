@@ -82,3 +82,8 @@ class StoryProcessorTest(unittest.TestCase):
         saveStories(feedContents, source)
 
         print len(WebStory.objects)
+
+from classifier import *
+class ClassifierTest(unittest.TestCase):
+    def test(self):
+        pass

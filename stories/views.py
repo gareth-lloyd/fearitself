@@ -1,18 +1,78 @@
 from django.template import RequestContext
 from models import NewsSource, WebStory, CleanStory
 from django.http import HttpResponse, HttpResponseRedirect
-from forms import *
+from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
+
+from googlereader import Reader, getCredentials
+from datetime import datetime
+from story_processor import saveStories
+from forms import TrainingForm
+
+START = datetime(2011, 3, 20)
+
+class FearLevel(object):
+    def __init__(self, name, colourName, low, high):
+        self.name = name
+        self.colour = colourName
+        self.low = low
+        self.high = high
+
+    def setActive(self, level):
+        if self.low < level <= self.high:
+            self.active = True
+        else:
+            self.active = False
+
+LEVELS = [
+    FearLevel('Red', 'red',  .7, 1.0),
+    FearLevel('Orange', 'orange', .6, .7),
+    FearLevel('Yellow', 'yellow', .5, .6),
+    FearLevel('Green', 'green', .4, .5),
+    FearLevel('Blue', 'blue', 0, .4),
+]
 
 # Create your views here.
 def fear(request):
-    pass
-
-def sources(request):
-    sources = NewsSource.objects
-    return render_to_response('charts.html',
-          {'charts' : charts},
+    # get fear level...
+    fearlevel = .5
+    return render_to_response('fear.html',
+            {'levels': getLevels(fearlevel)},
             context_instance=RequestContext(request))
 
+def training(request, clean_id=None):
+    if clean_id:
+        cleanStory = get_object_or_404(CleanStory, id=clean_id)
+    else:
+        pass
 
-def initsource(request, source_id=None):
-    pass
+
+def getLevels(fearlevel):
+    for level in LEVELS:
+        level.setActive(fearlevel)
+    return LEVELS
+
+def sources(request):
+    sources = NewsSource.objects.all()
+    return render_to_response('sources.html',
+          {'sources' : sources},
+            context_instance=RequestContext(request))
+
+def updatesource(request, source_id=None):
+    source = NewsSource.objects.get(id=source_id)
+    start = source.lastAccessed
+    if not start:
+        start = START
+    getFeedItems(source, start)
+    source.lastAccessed = datetime.now()
+    source.save()
+    return HttpResponseRedirect('/fear/sources/')
+
+def getFeedItems(source, start):
+    reader = Reader(getCredentials())
+    continuation = None
+    while True:
+        response = reader.getFeedItemsAfter(source.feed, start, continuation)
+        content = response.read()
+        continuation = reader.getContinuation(content)
+        saveStories(content, source)
+        

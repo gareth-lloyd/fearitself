@@ -1,0 +1,18 @@
+<html>
+<head>
+<link rel="stylesheet" href="/assets/main.css" />
+
+</head>
+<body>
+<h1>THREAT LEVEL</h1>
+<div id="fearmeter">
+{% for level in levels %}
+
+<div class="fearlevel fearlevel_{{level.colour}} active_{{level.active}}">
+{{level.name}}
+</div>
+
+{% endfor %}
+</ul>
+</body>
+</html>

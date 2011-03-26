@@ -1,0 +1,15 @@
+<html>
+<head></head>
+<body>
+<h1>Sources</h1>
+<ul>
+{% for source in sources %}
+
+<li>
+{{source.name}} <a href="/fear/sources/{{source.id}}/init">Init</a>
+</li>
+
+{% endfor %}
+</ul>
+</body>
+</html>
