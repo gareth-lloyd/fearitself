@@ -3,13 +3,13 @@
 {% block content %}
 <h1>Training</h1>
 <h3>Classify this story:</h3>
-<form action="/fear/training/{{cleanStory.id}}/" method="POST" id="trainingForm">
-<p>
-{{cleanStory.text}}
-</p>
+<form action="/fear/training/{{ cleanStory.pk }}/" method="POST" id="trainingForm">
 <div>
 {{ form.fearful }}
 </div>
+<p>
+{{ form.text }}
+</p>
 <input type="submit" value="Train"/>
 </form>
 {% endblock %}
