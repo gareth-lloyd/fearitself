@@ -24,25 +24,30 @@ class FearLevel(object):
             self.active = False
 
 LEVELS = [
-    FearLevel('shit it..', 'red',  .7, 1.0),
-    FearLevel('panic buy', 'orange', .6, .7),
-    FearLevel('an ill wind', 'yellow', .5, .6),
-    FearLevel('carry on', 'green', .4, .5),
-    FearLevel('pimms anyone?', 'blue', 0, .4),
+    FearLevel('shit it..', 'red',  .4, 1.0),
+    FearLevel('panic buy', 'orange', .35, .4),
+    FearLevel('an ill wind', 'yellow', .30, .35),
+    FearLevel('carry on', 'green', .25, .2),
+    FearLevel('pimms anyone?', 'blue', 0, .25),
 ]
 
-# Create your views here.
 def fear(request):
-    
+    "State the level of fear"    
     fearful = 0.0
+    nonfearful = 0.0
     stories = WebStory.objects.filter(date__gte=date.today())
     for story in stories:
         fear = story.cleanstory.fearful
-        if (fear == 1):
+        if fear == 1:
             fearful+= 1
-    
-    fearlevel = fearful / len(stories)
-    print "Threat level: "+str(fearlevel)+", fearful: "+str(fearful)+", number: "+str(len(stories))
+        elif fear == 0:
+            nonfearful += 1
+    denominator = (fearful + nonfearful)
+    if denominator > 0:
+        fearlevel = fearful / denominator
+    else: 
+        fearlevel = 0
+    print "Threat level: %s fearful %s nonfearful %s" %(fearlevel, fearful, nonfearful)
     return render_to_response('fear.html',
             {'levels': getLevels(fearlevel)},
             context_instance=RequestContext(request))

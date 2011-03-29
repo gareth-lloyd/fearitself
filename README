@@ -1,25 +1,6 @@
-This is a project for the Rewired State Hackday, March 2011
+This is a project for the Rewired State Hackday, March 26th 2011
 
 "We have nothing to fear but fear itself"
 
-Analyzing the fear levels in British national newspapers.
-
-It has often been said that fear of crime does more harm than crime itself. 
-
-The fear of crime is SCARIER than crime. 
-
-Well you know what this means: if we're afraid of crime, we should be VERY afraid of the fear of crime. 
-
-"The more fear-inducing articles are published in any given day, the more we will fear. And that's something to be afraid of."
-
-
-The British crime survey shows a shocking mismatch between true levels of crime and people's perceptions of crime. 
-- A large majority believe it's risen nationally, when in fact it's fallen
-- People are more positive about their local areas
-- "the proportion of people perceiving an increase nationally was highest for those crimes that receive the most media attention. For example 90 per cent of people perceived knife crime had gone up nationally, compared with lower profile crimes such as homes being broken into (67%) and cars being stolen (60%)."
-
-"We have nothing to fear, but fear itself."
-
-
-
-(For the sake of the competition, the first commit to this repo represents all work done before the hack day itself. It's mainly infrastructure stuff to pull down the various feeds.)
+Analyzing the fear levels in British national newspapers. An experiment with
+Django and NTLK. All the usual disclaimers about shoddy hack day code apply.
