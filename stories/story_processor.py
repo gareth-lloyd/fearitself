@@ -45,8 +45,6 @@ def processEntry(entry, source):
     link = entry.link
     fullText = getFullText(link)
     date = datetime.strptime(entry.published, D_FMT)
-    return WebStory(title=entry.title, 
+    return WebStory(title=entry.title,
             link=link, date=date,
             source=source, fullText=fullText)
-
-
